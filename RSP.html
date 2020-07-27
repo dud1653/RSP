@@ -23,14 +23,20 @@
         img:hover {
             box-shadow: -5px -5px silver;
         }
+        #result {
+            clear: both;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
             <h3>가위, 바위, 보를 선택하시오.</h3>
-            <img onclick="Rock()" src="images/rock.png">
-            <img onclick="Scissors()" src="images/scissors.png">
-            <img onclick="Paper()" src="images/paper.png">
+            <img onclick="Rock()" src="images/0.png">
+            <img onclick="Scissors()" src="images/1.png">
+            <img onclick="Paper()" src="images/2.png">
+    </div>
+    <div id="result">
     </div>
     
     <script>
@@ -40,17 +46,19 @@
         var lose = 0;
         var draw = 0;
 
-        function Rock() {
+        function check(a, b) {
             while(go == true){
             var ran = Math.floor(Math.random() * 3);
-            if(ran == 0) {
-                alert("DRAW");
+            if(ran == a) {
+                result.innerHTML = '<h3>COM</h3><img src = "images/'+ran+'.png">';
+                alert("COM WIN");
                 cnt++;
-                draw++;
+                lose++;
                 alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
                 go = confirm("게임을 하시겠습니까?");
                 break;
-            } else if(ran == 1){
+            } else if(ran == b){
+                result.innerHTML = '<h3>COM</h3><img src = "images/'+ran+'.png">';
                 alert("USER WIN");
                 cnt++;
                 win++;
@@ -58,73 +66,27 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else {
-                alert("COM WIN");
+                result.innerHTML = '<h3>COM</h3><img src = "images/' + ran +'.png">';
+                alert("DRAW");
                 cnt++;
-                lose++;
+                draw++;
                 alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
                 go = confirm("게임을 하시겠습니까?");
                 break;
             }
             }   
         }
+        function Rock() {
+            check(2, 1);
+        }
         
         function Scissors() {
-            while(go == true){
-            var ran = Math.floor(Math.random() * 3);
-            if(ran == 0) {
-                alert("COM WIN");
-                cnt++;
-                lose++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else if(ran == 1){
-                alert("DRAW");
-                cnt++;
-                draw++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else {
-                alert("USER WIN");
-                cnt++;
-                win++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            }
-            }
+            check(0, 2)
         }
 
         function Paper() {
-            while(go == true){
-            var ran = Math.floor(Math.random() * 3);
-            if(ran == 0) {
-                alert("USER WIN");
-                cnt++;
-                win++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else if(ran == 1){
-                alert("COM WIN");
-                cnt++;
-                lose++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else {
-                alert("DRAW");
-                cnt++;
-                draw++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            }
-            }
+            check(1, 0);
         }
-
-        
     </script>
 </body>
 </html>
