@@ -23,6 +23,9 @@
         img:hover {
             box-shadow: -5px -5px silver;
         }
+        #result {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -31,6 +34,8 @@
             <img onclick="Rock()" src="images/rock.png">
             <img onclick="Scissors()" src="images/scissors.png">
             <img onclick="Paper()" src="images/paper.png">
+    </div>
+    <div id="result">
     </div>
     
     <script>
@@ -44,6 +49,7 @@
             while(go == true){
             var ran = Math.floor(Math.random() * 3);
             if(ran == 0) {
+                result.innerHTML = '<h3>COM</h3><img src = "images/rock.png">';
                 alert("DRAW");
                 cnt++;
                 draw++;
@@ -51,6 +57,7 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else if(ran == 1){
+                result.innerHTML = '<h3>COM</h3><img src = "images/scissors.png">';
                 alert("USER WIN");
                 cnt++;
                 win++;
@@ -58,6 +65,7 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else {
+                result.innerHTML = '<h3>COM</h3><img src = "images/paper.png">';
                 alert("COM WIN");
                 cnt++;
                 lose++;
@@ -72,6 +80,7 @@
             while(go == true){
             var ran = Math.floor(Math.random() * 3);
             if(ran == 0) {
+                result.innerHTML = '<h3>COM</h3><img src = "images/rock.png">';
                 alert("COM WIN");
                 cnt++;
                 lose++;
@@ -79,6 +88,7 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else if(ran == 1){
+                result.innerHTML = '<h3>COM</h3><img src = "images/scissors.png">';
                 alert("DRAW");
                 cnt++;
                 draw++;
@@ -86,6 +96,7 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else {
+                result.innerHTML = '<h3>COM</h3><img src = "images/papar.png">';
                 alert("USER WIN");
                 cnt++;
                 win++;
@@ -100,6 +111,7 @@
             while(go == true){
             var ran = Math.floor(Math.random() * 3);
             if(ran == 0) {
+                result.innerHTML = '<h3>COM</h3><img src = "images/rock.png">';
                 alert("USER WIN");
                 cnt++;
                 win++;
@@ -107,6 +119,7 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else if(ran == 1){
+                result.innerHTML = '<h3>COM</h3><img src = "images/scissors.png">';
                 alert("COM WIN");
                 cnt++;
                 lose++;
@@ -114,6 +127,7 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else {
+                result.innerHTML = '<h3>COM</h3><img src = "images/paper.png">';
                 alert("DRAW");
                 cnt++;
                 draw++;
@@ -122,9 +136,7 @@
                 break;
             }
             }
-        }
-
-        
+        }     
     </script>
 </body>
 </html>
