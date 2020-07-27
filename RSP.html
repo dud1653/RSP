@@ -24,7 +24,7 @@
             box-shadow: -5px -5px silver;
         }
         #result {
-            text-align: center;
+            clear: both;
         }
     </style>
 </head>
@@ -45,19 +45,19 @@
         var lose = 0;
         var draw = 0;
 
-        function Rock() {
+        function check(a, b) {
             while(go == true){
             var ran = Math.floor(Math.random() * 3);
-            if(ran == 0) {
-                result.innerHTML = '<h3>COM</h3><img src = "images/rock.png">';
-                alert("DRAW");
+            if(ran == a) {
+                result.innerHTML = '<h3>COM</h3><img src = "images/'+ran+'.png">';
+                alert("COM WIN");
                 cnt++;
-                draw++;
+                lose++;
                 alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
                 go = confirm("게임을 하시겠습니까?");
                 break;
-            } else if(ran == 1){
-                result.innerHTML = '<h3>COM</h3><img src = "images/scissors.png">';
+            } else if(ran == b){
+                result.innerHTML = '<h3>COM</h3><img src = "images/'+ran+'.png">';
                 alert("USER WIN");
                 cnt++;
                 win++;
@@ -65,78 +65,27 @@
                 go = confirm("게임을 하시겠습니까?");
                 break;
             } else {
-                result.innerHTML = '<h3>COM</h3><img src = "images/paper.png">';
-                alert("COM WIN");
+                result.innerHTML = '<h3>COM</h3><img src = "images/' + ran +'.png">';
+                alert("DRAW");
                 cnt++;
-                lose++;
+                draw++;
                 alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
                 go = confirm("게임을 하시겠습니까?");
                 break;
             }
             }   
         }
+        function Rock() {
+            check(2, 1);
+        }
         
         function Scissors() {
-            while(go == true){
-            var ran = Math.floor(Math.random() * 3);
-            if(ran == 0) {
-                result.innerHTML = '<h3>COM</h3><img src = "images/rock.png">';
-                alert("COM WIN");
-                cnt++;
-                lose++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else if(ran == 1){
-                result.innerHTML = '<h3>COM</h3><img src = "images/scissors.png">';
-                alert("DRAW");
-                cnt++;
-                draw++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else {
-                result.innerHTML = '<h3>COM</h3><img src = "images/papr.png">';
-                alert("USER WIN");
-                cnt++;
-                win++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            }
-            }
+            check(0, 2)
         }
 
         function Paper() {
-            while(go == true){
-            var ran = Math.floor(Math.random() * 3);
-            if(ran == 0) {
-                result.innerHTML = '<h3>COM</h3><img src = "images/rock.png">';
-                alert("USER WIN");
-                cnt++;
-                win++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else if(ran == 1){
-                result.innerHTML = '<h3>COM</h3><img src = "images/scissors.png">';
-                alert("COM WIN");
-                cnt++;
-                lose++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            } else {
-                result.innerHTML = '<h3>COM</h3><img src = "images/paper.png">';
-                alert("DRAW");
-                cnt++;
-                draw++;
-                alert(cnt + "전 "+ win + "승 " + lose + "패 " + draw + "무");
-                go = confirm("게임을 하시겠습니까?");
-                break;
-            }
-            }
-        }     
+            check(1, 0);
+        }
     </script>
 </body>
 </html>
